@@ -12,7 +12,7 @@ var config = {
   };
   firebase.initializeApp(config);
 
-  var database = firebase(database);
+  var database = firebase.database();
 
  $("#add-train-btn").on("click", function(event){
     event.preventDefault();
@@ -26,7 +26,7 @@ var config = {
         name: trainName,
         destination: destinationName,
         start: firstTrain,
-        rate: trainFrequency
+        rate: trainFrequency,
     };
 
     database.ref().push(newTrainToDatabase);
@@ -34,7 +34,7 @@ var config = {
     console.log(newTrainToDatabase.name);
     console.log(newTrainToDatabase.destination);
     console.log(newTrainToDatabase.start);
-    console.log(newTrainToDatabase);
+    console.log(newTrainToDatabase.rate);
 
  });
 //   create submission functionality. 1. write on(click). 2. prevent default/null entry. 2b. additional null protection: give every input an additional class for '.blank-check' and if field === no input, than prevent input from occuring. 3. get value from each input ID by creating new vars and defining them by each submission field with val() and trim(). 4. create object array as a temporary holding zone. 5. push object array to database. 6. clear the entries. now they're in firebase.
