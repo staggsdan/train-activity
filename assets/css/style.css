@@ -1,4 +1,11 @@
-/* .card {
+.card {
     width: 80%
     
-} */
+}
+
+.removal-button{
+    background-color: red;
+    color: white;
+    
+ 
+}
