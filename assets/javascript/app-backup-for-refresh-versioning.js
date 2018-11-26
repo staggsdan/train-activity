@@ -75,9 +75,9 @@ database.ref().on("child_added", function(childSnapshot){
 
 // create 'populate list' functionality. push from firebase back out to display once firebase receives data. 1. write an "on(child_added)" very similar to an "on(click)" that stores all the firebase/input fields into vars. 2. any necessary conversion math (double check instruction requests). 3. the necessary modal math to determine wait times for the next train. 4. write the modified data fields to a new var called 'newRow', format as a <tr>, and format all the fields as <td>. see exercise 4.2.17.
 
-$(document).on("click", ".removal-button", function(){
-    
-}
+// $(document).on("click", ".removal-button", function(){
+
+// }
 
 // stretch goal: function to delete trains from the table.
 

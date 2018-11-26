@@ -57,27 +57,34 @@ database.ref().on("child_added", function(childSnapshot){
     var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
 
     var tRemainder = diffTime % trainFrequency;
-    // console.log(tRemainder);
 
     var tMinutesTillTrain = trainFrequency - tRemainder;
-    // console.log("MINUTES TILL TRAIN: " + tMinutesTillTrain)
 
     var nextTrain = currentTime.add(tMinutesTillTrain, "minutes");
-    // console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm"));
 
+    var i = 0;
     var newRow = $("<tr>").append(
         $("<td>").text(trainName),
         $("<td>").text(destinationName),
         $("<td>").text(trainFrequency),
         $("<td>").text(nextTrain.format('HH:mm')),
         $("<td>").text(tMinutesTillTrain),
-        $("<td>").html("<button>x</button>"),
+        $("<td>").html("<button class=removal-button>x</button>"),
     );
+    newRow.addClass("row-" + i);
 
     $("#train-table").append(newRow);
-})
+    i++;
+});
 
 // create 'populate list' functionality. push from firebase back out to display once firebase receives data. 1. write an "on(child_added)" very similar to an "on(click)" that stores all the firebase/input fields into vars. 2. any necessary conversion math (double check instruction requests). 3. the necessary modal math to determine wait times for the next train. 4. write the modified data fields to a new var called 'newRow', format as a <tr>, and format all the fields as <td>. see exercise 4.2.17.
+
+$(document).on("click", ".removal-button", function(){
+    // identify the row correctly: ???
+    // delete the row:
+    // database.ref() _then some attr or cls info .remove();
+})
+
 
 // stretch goal: function to delete trains from the table.
 // 1. tweak the append-to-database code to add an attribute ID = index position. 2. onclick xbutton id of a certain index, delete that object from firebase. should be easy with some google.
