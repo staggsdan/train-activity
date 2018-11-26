@@ -91,6 +91,7 @@ $(document).on("click", ".removal-button", function(){
 
 // stretch goal: function to refresh the time ever 15 or 30 seconds or so. plan to google, and accordinging to instructions, consider setting up a second repo
 
+// database.setTimeout(function(){ location.reload(); }, 15000);
 function viewRefresher(){
 
 
