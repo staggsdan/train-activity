@@ -22,10 +22,14 @@ var config = {
     var firstTrain = $("#first-train-time-input").val().trim();
     var trainFrequency = $("#frequency-input").val().trim();
 
+    // googled a few different ways to reduce errors in the user data for the HH:mm format, and spun this solution out of someones tip for ensuring a certain number of digits.
+    var formattedFirstTrain = ("0" + firstTrain).slice(-5);
+
+
     var newTrainToDatabase = {
         name: trainName,
         destination: destinationName,
-        start: firstTrain,
+        start: formattedFirstTrain,
         rate: trainFrequency,
     };
 
@@ -67,6 +71,7 @@ database.ref().on("child_added", function(childSnapshot){
         $("<td>").text(trainFrequency),
         $("<td>").text(nextTrain.format('HH:mm')),
         $("<td>").text(tMinutesTillTrain),
+        $("<td>").html("<button>x</button>"),
     );
 
     $("#train-table").append(newRow);
@@ -75,8 +80,14 @@ database.ref().on("child_added", function(childSnapshot){
 // create 'populate list' functionality. push from firebase back out to display once firebase receives data. 1. write an "on(child_added)" very similar to an "on(click)" that stores all the firebase/input fields into vars. 2. any necessary conversion math (double check instruction requests). 3. the necessary modal math to determine wait times for the next train. 4. write the modified data fields to a new var called 'newRow', format as a <tr>, and format all the fields as <td>. see exercise 4.2.17.
 
 // stretch goal: function to delete trains from the table.
+// 1. tweak the append-to-database code to add an attribute ID = index position. 2. onclick xbutton id of a certain index, delete that object from firebase. should be easy with some google.
 
 // stretch goal: function to refresh the time ever 15 or 30 seconds or so. plan to google, and accordinging to instructions, consider setting up a second repo
+
+function viewRefresher(){
+
+
+}
 
 // stretch goal: prettify css
 
